@@ -1,0 +1,5 @@
+venv/
+frontdesk/
+__pycache__/
+*.pyc
+.env

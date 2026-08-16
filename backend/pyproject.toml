@@ -1,0 +1,5 @@
+[tool.taskipy.tasks]
+dev = { cmd = "uvicorn main:app --reload", help = "FastAPI dev server chalao (auto-reload ke saath)" }
+db = { cmd = "docker compose up -d", help = "PostgreSQL container start karo" }
+db-stop = { cmd = "docker compose down", help = "PostgreSQL container band karo (data safe rahega)" }
+psql = { cmd = "docker exec -it frontdesk-postgres psql -U postgres -d frontdesk", help = "Postgres ka SQL shell kholo" }
