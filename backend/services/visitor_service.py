@@ -1,7 +1,8 @@
-from db.models import Visitor
-from schemas.visitor import VisitorCreate
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+
+from db.models import Visitor
+from schemas.visitor import VisitorCreate
 
 
 def create_visitor(db: Session, data: VisitorCreate) -> Visitor:

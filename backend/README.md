@@ -46,11 +46,32 @@ Phir taskipy shortcuts use karo (tasks `pyproject.toml` me defined hain):
 
 ```powershell
 task db        # PostgreSQL container start
+task migrate   # DB migrations apply karo (pehli baar aur har schema change ke baad)
 task dev       # FastAPI dev server (auto-reload)
 task psql      # Postgres ka SQL shell
 task db-stop   # PostgreSQL container band
 task --list    # saare tasks dekho
 ```
+
+Quality checks (CI bhi yahi chalata hai):
+
+```powershell
+task lint          # ruff lint + format check
+task fix           # lint issues auto-fix + format
+task typecheck     # mypy
+task test          # pytest (in-memory SQLite pe, DB nahi chahiye)
+```
+
+## Database migrations (Alembic)
+
+Tables ab `create_all` se nahi, **Alembic migrations** se banti hain:
+
+```powershell
+task migrate                        # pending migrations apply karo
+task makemigration "add xyz table"  # model change ke baad nayi migration generate karo
+```
+
+Naya model banao → `alembic/env.py` me `db.models` import hona chahiye (already hai) → `task makemigration "..."` → generated file review karo → `task migrate`.
 
 - API docs: http://127.0.0.1:8000/docs
 - Health check: http://127.0.0.1:8000/health

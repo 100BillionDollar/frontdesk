@@ -1,13 +1,9 @@
-from app.routers import visitors
-from db import models  # noqa: F401
-from db.database import Base, engine
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="FrontDesk API")
+from app.routers import visitors
 
-# Dev-only: DB me tables auto-create ho jayengi. Production me Alembic use karein.
-Base.metadata.create_all(bind=engine)
+app = FastAPI(title="FrontDesk API")
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,5 +17,5 @@ app.include_router(visitors.router)
 
 
 @app.get("/health")
-def health():
+def health() -> dict[str, str]:
     return {"status": "ok"}

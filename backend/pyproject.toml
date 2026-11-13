@@ -3,3 +3,44 @@ dev = { cmd = "uvicorn main:app --reload", help = "FastAPI dev server chalao (au
 db = { cmd = "docker compose up -d", help = "PostgreSQL container start karo" }
 db-stop = { cmd = "docker compose down", help = "PostgreSQL container band karo (data safe rahega)" }
 psql = { cmd = "docker exec -it frontdesk-postgres psql -U postgres -d frontdesk", help = "Postgres ka SQL shell kholo" }
+lint = { cmd = "ruff check . && ruff format --check .", help = "Lint + format check (CI-style, kuch change nahi karta)" }
+fix = { cmd = "ruff check --fix . && ruff format .", help = "Lint issues auto-fix + format" }
+typecheck = { cmd = "mypy .", help = "mypy se type check" }
+test = { cmd = "pytest", help = "Tests chalao" }
+migrate = { cmd = "alembic upgrade head", help = "Pending DB migrations apply karo" }
+makemigration = { cmd = "alembic revision --autogenerate -m", help = "Model changes se nayi migration banao (saath me message do)" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+extend-exclude = ["venv"]
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle errors
+  "W",   # pycodestyle warnings
+  "F",   # pyflakes
+  "I",   # isort
+  "B",   # flake8-bugbear
+  "UP",  # pyupgrade
+  "SIM", # flake8-simplify
+  "C4",  # flake8-comprehensions
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "db", "schemas", "services"]
+
+[tool.mypy]
+python_version = "3.14"
+plugins = ["pydantic.mypy"]
+check_untyped_defs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+exclude = ["^venv/", "^alembic/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
