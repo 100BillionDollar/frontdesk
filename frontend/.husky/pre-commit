@@ -1,0 +1,15 @@
+set -e
+
+# --- frontend: staged files pe lint-staged (oxlint --fix + prettier) + typecheck ---
+cd frontend
+npx lint-staged
+npm run typecheck
+cd ..
+
+# --- backend: staged .py files pe ruff auto-fix + format ---
+PY_STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep '^backend/.*\.py$' || true)
+if [ -n "$PY_STAGED" ]; then
+  backend/venv/Scripts/python -m ruff check --fix $PY_STAGED
+  backend/venv/Scripts/python -m ruff format $PY_STAGED
+  git add $PY_STAGED
+fi

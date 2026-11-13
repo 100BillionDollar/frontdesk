@@ -1,0 +1,51 @@
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: left;
+}
+
+.subtitle {
+  color: #888;
+  margin-top: -0.5rem;
+}
+
+.visitor-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.visitor-form input {
+  flex: 1 1 140px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.visitor-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.visitor-list li {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+}
+
+.time {
+  color: #888;
+  font-size: 0.85em;
+}
+
+.error {
+  color: #e5484d;
+}
