@@ -1,69 +1,71 @@
 # FrontDesk — Product Requirements Document (PRD)
 
-> **Ek line mein idea:** Solo service professionals (doctor, physio, salon, tutor, CA, lawyer) ke liye ek "digital front desk" — booking + WhatsApp reminders + UPI payment link — sab kuch vernacular aur WhatsApp-native.
+🇬🇧 **English** | 🇮🇳 [Hinglish](REQUIREMENTS.hi.md)
+
+> **The idea in one line:** A "digital front desk" for solo service professionals (doctor, physio, salon, tutor, CA, lawyer) — booking + WhatsApp reminders + UPI payment links — all vernacular and WhatsApp-native.
 
 ---
 
-## 1. Problem — kya dikkat hai aur kyun matter karti hai
+## 1. Problem — what hurts and why it matters
 
-India ke solo consultants, physiotherapists, chhote clinics, salons, tutors, lawyers, CAs aur diagnostic sample collectors aaj bhi apna calendar **phone aur paper diary** pe chalate hain.
+India's solo consultants, physiotherapists, small clinics, salons, tutors, lawyers, CAs and diagnostic sample collectors still run their calendars on **phone calls and paper diaries**.
 
-- Payments (UPI) aur discovery (jaise Google ya JustDial) toh digitize ho chuke hain, lekin appointment scheduling abhi bhi peeche hai — ise describe kiya gaya hai as *"one of the few remaining processes that still relies on manual effort"*.
-- Iski wajah se do direct revenue losses hote hain:
-  1. **No-shows** — customer time pe nahi aata, slot waste ho jaata hai.
-  2. **Missed WhatsApp enquiries** — professional busy hai, reply nahi kar paata, customer kahin aur chala jaata hai.
+- Payments (UPI) and discovery (Google, JustDial) have already digitized, but appointment scheduling lags behind — it has been described as *"one of the few remaining processes that still relies on manual effort"*.
+- This causes two direct revenue losses:
+  1. **No-shows** — the customer doesn't turn up on time and the slot is wasted.
+  2. **Missed WhatsApp enquiries** — the professional is busy, can't reply, and the customer goes elsewhere.
 
-## 2. Target User — kiske liye bana rahe hain
+## 2. Target User — who we are building for
 
 | Attribute | Detail |
 |---|---|
-| Kaun | Solo professionals aur 1–3 logon ki practices |
-| Professions | Consultant, physio, chhota clinic, salon, tutor, lawyer, CA, diagnostic collector |
-| Location | Tier-1 aur Tier-2 cities |
-| Age | 25–50 saal |
-| Tech comfort | WhatsApp aur UPI already use karte hain |
-| Key constraint | **Koi receptionist nahi hai** — khud hi sab manage karte hain |
+| Who | Solo professionals and practices of 1–3 people |
+| Professions | Consultant, physio, small clinic, salon, tutor, lawyer, CA, diagnostic collector |
+| Location | Tier-1 and Tier-2 cities |
+| Age | 25–50 years |
+| Tech comfort | Already use WhatsApp and UPI |
+| Key constraint | **No receptionist** — they manage everything themselves |
 
-## 3. Market Timing — 2026 hi kyun sahi waqt hai
+## 3. Market Timing — why 2026 is the right moment
 
-- **UPI AutoPay aur payment links** ab har jagah common hain — customer ke liye prepay karna friction-free hai.
-- **WhatsApp Business API** ab templated reminders aur payments officially support karta hai.
-- Industry signal: YourStory ne automated scheduling ko **"the next phase of SMB digitization"** bola hai — matlab yeh category abhi inflect kar rahi hai, market ready hai.
+- **UPI AutoPay and payment links** are now ubiquitous — prepaying is friction-free for customers.
+- **WhatsApp Business API** now officially supports templated reminders and payments.
+- Industry signal: YourStory has called automated scheduling **"the next phase of SMB digitization"** — the category is inflecting right now, and the market is ready.
 
-## 4. Competition — kaun hai aur gap kahan hai
+## 4. Competition — who's out there and where the gap is
 
 **Global tools** — Calendly, Acuity, SimplyBook.me, Fresha:
 - English-first, card-centric payments.
-- UPI/WhatsApp aur vernacular users ke liye tuned nahi hain.
+- Not tuned for UPI/WhatsApp or vernacular users.
 
 **Indian vertical tools** — EasySalon (salons), Practo Ray / Healcard (clinics):
-- Heavy hain, ek hi vertical mein locked hain.
-- Established businesses ke liye priced/positioned hain, solo professional ke liye nahi.
+- Heavy, and locked into a single vertical.
+- Priced and positioned for established businesses, not solo professionals.
 
-**Open gap (hamara sweet spot):**
-> Ek **horizontal, ultra-simple, vernacular, WhatsApp-first** tool — booking + reminder + prepay link — us solo professional ke liye jisko full CRM overkill lagta hai.
+**Open gap (our sweet spot):**
+> A **horizontal, ultra-simple, vernacular, WhatsApp-first** tool — booking + reminder + prepay link — for the solo professional who finds a full CRM overkill.
 
-## 5. Monetization — paise kaise banenge
+## 5. Monetization — how the money comes in
 
 - **Model:** Freemium.
 - **Subscription:** ₹199–₹499/month per professional.
-- **Add-on:** per-reminder ya per-collection micro-fee.
-- **Price validation:** adjacent tools se — TuitionPlus ₹499/month pe chalta hai; WhatsApp BSP plans bade SMBs ke liye commonly ₹1,500–₹5,000/month hote hain. Matlab solo professional ke liye ₹199–₹499 ka price point realistic hai.
+- **Add-on:** per-reminder or per-collection micro-fee.
+- **Price validation:** from adjacent tools — TuitionPlus runs at ₹499/month; WhatsApp BSP plans for larger SMBs commonly cost ₹1,500–₹5,000/month. A ₹199–₹499 price point for a solo professional is therefore realistic.
 
-## 6. MVP Scope — kya banana hai (6–12 weekends ka target)
+## 6. MVP Scope — what to build (target: 6–12 weekends)
 
 ### 6.1 Functional Requirements
 
 | ID | Feature | Description |
 |---|---|---|
-| FR-1 | **Booking page** | Har professional ko ek shareable link + QR code milega. Customer link kholke available slot pick karke book kar sake — sirf naam + phone number, koi account/login nahi. |
-| FR-2 | **Slots & bookings** | Professional apni weekly availability set kare (default: 30-min slots, ek slot = ek booking). System double-booking prevent kare — jo booking pehle confirm ho, wahi slot le. Cancel customer aur professional dono kar sakein. |
-| FR-3 | **WhatsApp confirmations & reminders** | Booking pe turant WhatsApp confirmation, aur appointment se pehle automated reminder (default: 24 ghante + 2 ghante pehle) — no-show kam karne ke liye. Do cheezein dhyaan mein: (a) message templates Meta se pre-approve karane padte hain (lead time hota hai), (b) customer ka opt-in chahiye — booking form mein consent checkbox rakhna hoga. |
-| FR-4 | **UPI payment link (deposit)** | Deposit ek **per-professional toggle** hai — jo chahe on kare. On hone pe booking lifecycle: `pending-payment` → `confirmed` (pay hote hi) → `expired` (agar ~15 min mein pay nahi hua, slot release). Cancellation pe refund MVP mein manual — professional khud handle kare. |
-| FR-5 | **Vernacular UI** | UI Hindi + ek regional language mein (English ke saath). Kaunsi regional language — pehle pilot city ke hisaab se decide karo. Professional onboarding mein apne page ki default language chune; customer ko booking page pe language toggle mile. |
-| FR-6 | **Professional onboarding & dashboard** | Professional ka signup/login (phone + OTP kaafi hai), service aur timings ka setup, aur ek simple dashboard — aaj ki aur aane wali bookings dekhna + cancel karna. |
+| FR-1 | **Booking page** | Every professional gets a shareable link + QR code. A customer opens the link, picks an available slot and books — just name + phone number, no account or login. |
+| FR-2 | **Slots & bookings** | The professional sets their weekly availability (default: 30-min slots, one slot = one booking). The system prevents double-booking — the first confirmed booking wins the slot. Both the customer and the professional can cancel. |
+| FR-3 | **WhatsApp confirmations & reminders** | Instant WhatsApp confirmation on booking, plus automated reminders before the appointment (default: 24 hours + 2 hours before) to reduce no-shows. Two things to keep in mind: (a) message templates must be pre-approved by Meta (there's lead time), (b) customer opt-in is required — the booking form needs a consent checkbox. |
+| FR-4 | **UPI payment link (deposit)** | The deposit is a **per-professional toggle** — each professional opts in. When on, the booking lifecycle is: `pending-payment` → `confirmed` (as soon as paid) → `expired` (if unpaid after ~15 min, the slot is released). Refunds on cancellation are manual in the MVP — the professional handles them. |
+| FR-5 | **Vernacular UI** | UI in Hindi + one regional language (alongside English). Which regional language — decide based on the first pilot city. The professional picks their page's default language during onboarding; the customer gets a language toggle on the booking page. |
+| FR-6 | **Professional onboarding & dashboard** | Professional signup/login (phone + OTP is enough), service and timings setup, and a simple dashboard — view today's and upcoming bookings + cancel. |
 
-### 6.2 Out of Scope (MVP mein NAHI banana)
+### 6.2 Out of Scope (do NOT build in the MVP)
 
 - ❌ EMR / health records
 - ❌ Staff management / multi-staff
@@ -72,54 +74,54 @@ India ke solo consultants, physiotherapists, chhote clinics, salons, tutors, law
 
 ### 6.3 Build Order (suggested phasing)
 
-1. **Phase 1 (weekends 1–4):** FR-6 basic + FR-1 + FR-2 — booking core end-to-end. Link se booking ho jaaye, bas.
-2. **Phase 2 (weekends 5–8):** FR-3 — WhatsApp confirmations + reminders. (Template approval Phase 1 mein hi start kar do — Meta ka approval time lagta hai.)
+1. **Phase 1 (weekends 1–4):** FR-6 basic + FR-1 + FR-2 — the booking core end-to-end. A booking must work via the link, nothing more.
+2. **Phase 2 (weekends 5–8):** FR-3 — WhatsApp confirmations + reminders. (Start template approval during Phase 1 — Meta's approval takes time.)
 3. **Phase 3 (weekends 9–12):** FR-4 payments + FR-5 vernacular polish.
 
 ### 6.4 Typical User Flow (example)
 
-1. Physio apna FrontDesk link WhatsApp status / Google profile pe daalta hai.
-2. Customer link kholta hai → available slot choose karta hai → naam + phone number deta hai, WhatsApp updates ka consent checkbox tick karta hai.
-3. UPI link se ₹100 deposit pay karta hai (agar professional ne deposit toggle on kiya hai).
-4. Dono ko WhatsApp pe confirmation milta hai.
-5. Appointment se pehle customer ko automated WhatsApp reminder jaata hai.
+1. A physio puts their FrontDesk link on their WhatsApp status / Google profile.
+2. A customer opens the link → chooses an available slot → enters name + phone number, ticks the WhatsApp-updates consent checkbox.
+3. Pays a ₹100 deposit via a UPI link (if the professional has the deposit toggle on).
+4. Both get a WhatsApp confirmation.
+5. The customer receives an automated WhatsApp reminder before the appointment.
 
-## 7. Tech Stack — kya use karenge aur kyun
+## 7. Tech Stack — what we'll use and why
 
-| Layer | Choice | Kyun |
+| Layer | Choice | Why |
 |---|---|---|
-| Frontend | **React PWA** | App-jaise mobile UX bina app-store friction ke; link/QR se directly khul jaata hai. |
-| Backend | **FastAPI (Python)** | Async model WhatsApp/UPI **webhooks** aur reminder **schedulers** ke liye ideal hai. |
-| Future AI | Python ecosystem | Baad mein AI features (no-show prediction, vernacular chat booking) add karna trivial ho jaata hai. |
-| Messaging | WhatsApp Business API | Templated confirmations/reminders officially supported. |
-| Payments | Licensed PA/PG ke payment links (UPI) | Khud fintech nahi banna — licensed provider use karna hai. |
+| Frontend | **React PWA** | App-like mobile UX without app-store friction; opens directly from a link/QR. |
+| Backend | **FastAPI (Python)** | The async model is ideal for WhatsApp/UPI **webhooks** and reminder **schedulers**. |
+| Future AI | Python ecosystem | Adding AI features later (no-show prediction, vernacular chat booking) becomes trivial. |
+| Messaging | WhatsApp Business API | Templated confirmations/reminders are officially supported. |
+| Payments | Payment links from a licensed PA/PG (UPI) | We don't become a fintech ourselves — use a licensed provider. |
 
-## 8. Full-Scale Roadmap — MVP ke baad kya
+## 8. Full-Scale Roadmap — after the MVP
 
-1. **Multi-staff support** — 1–3 se bade teams ke liye.
-2. **Vertical templates** — clinic vs salon vs tutor ke alag-alag presets.
+1. **Multi-staff support** — for teams larger than 1–3.
+2. **Vertical templates** — separate presets for clinic vs salon vs tutor.
 3. **Analytics** — bookings, no-shows, revenue trends.
-4. **Review collection** — appointment ke baad customer se review maangna.
-5. **AI voice/chat booking** — customer WhatsApp pe chat/voice se hi book kar sake.
+4. **Review collection** — ask the customer for a review after the appointment.
+5. **AI voice/chat booking** — customers book directly via chat/voice on WhatsApp.
 
-Long-term vision: har profession ke liye ek **vertical SaaS suite** ban jaana.
+Long-term vision: become a **vertical SaaS suite** for each profession.
 
-## 9. Success Metrics — MVP kaamyab hua, kaise pata chalega
+## 9. Success Metrics — how we'll know the MVP worked
 
-Yeh targets suggestions hain — pilot ke baad adjust karo:
+These targets are suggestions — adjust after the pilot:
 
-- Launch ke **3 mahine mein ~10 paying professionals**.
-- Har active professional ke **≥5 bookings/week** link ke through.
-- Reminder-enabled bookings ka **no-show rate baseline se ~30% kam**.
+- **~10 paying professionals within 3 months** of launch.
+- **≥5 bookings/week** per active professional through their link.
+- **No-show rate ~30% lower than baseline** for reminder-enabled bookings.
 
-Agar yeh numbers nahi aa rahe, toh scale karne se pehle positioning ya pricing pe wapas jao.
+If these numbers don't materialize, revisit positioning or pricing before scaling.
 
-## 10. Regulation & Compliance — kitna risk hai
+## 10. Regulation & Compliance — how much risk
 
-**MVP stage pe risk LOW hai:**
+**At the MVP stage the risk is LOW:**
 
-- **DPDP Act** apply hota hai (hum names + phone numbers store karenge), lekin obligations **13 May 2027 tak phase-in** ho rahi hain — abhi time hai.
-- Hum **fintech nahi hain** — payment links ke liye licensed PA/PG (payment aggregator/gateway) use karenge, khud paisa handle nahi karenge.
-- MVP mein **health records store nahi** kar rahe, toh medical-data regulations trigger nahi hote.
+- The **DPDP Act** applies (we store names + phone numbers), but obligations **phase in until 13 May 2027** — there is time.
+- We are **not a fintech** — payment links go through a licensed PA/PG (payment aggregator/gateway); we never handle the money ourselves.
+- The MVP **stores no health records**, so medical-data regulations aren't triggered.
 
-> **Bottom line:** Compliance scale pe activate hoti hai, validation pe nahi. Abhi build karo, validate karo; compliance baad mein aayegi.
+> **Bottom line:** Compliance activates at scale, not at validation. Build and validate now; compliance comes later.

@@ -15,7 +15,7 @@ Yeh file **har AI coding assistant** ke liye instructions hai — Claude Code, G
 
 ## Project kya hai
 
-FrontDesk — solo service professionals (doctor, physio, salon, tutor, CA) ke liye booking + WhatsApp reminders + UPI payment links. Poora PRD [REQUIREMENTS.md](REQUIREMENTS.md) mein hai — koi bhi feature guide karne se pehle PRD ka relevant section check karo (scope, build order, out-of-scope cheezein).
+FrontDesk — solo service professionals (doctor, physio, salon, tutor, CA) ke liye booking + WhatsApp reminders + UPI payment links. Poora PRD do versions mein hai: [REQUIREMENTS.md](REQUIREMENTS.md) (English, default) aur [REQUIREMENTS.hi.md](REQUIREMENTS.hi.md) (Hinglish, team ke liye) — content dono mein same hai, koi bhi feature guide karne se pehle PRD ka relevant section check karo (scope, build order, out-of-scope cheezein). **Sync rule:** PRD mein koi change ho toh dono files update karni hain, sirf ek nahi.
 
 ## Repo structure
 
