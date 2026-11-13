@@ -1,0 +1,3 @@
+# Local-only tool/editor files
+.claude/settings.local.json
+.vscode/
